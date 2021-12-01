@@ -1,1 +1,3 @@
-console.warn('Hello, World!');
+import { logger } from './lib/logger';
+
+logger.info('Hello, world!');

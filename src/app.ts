@@ -1,11 +1,41 @@
+import fs from 'fs';
+import path from 'path';
+
+import bodyParser from 'body-parser';
+import cors from 'cors';
 import express from 'express';
+import helmet from 'helmet';
+import morgan from 'morgan';
 
 import { logger } from './lib/logger';
 import { normalizePort, onError } from './lib/server';
+import { removeTrailingSlash } from './middlewares/removeTrailingSlash';
 
+const isProd = process.env.NODE_ENV === 'production';
+const logStream = isProd
+    ? fs.createWriteStream(path.join(__dirname, '..', 'access.log'), {
+          flags: 'a',
+      })
+    : undefined;
+
+// --- Init express ---
 const app = express();
+
+// --- Add middlewares ---
+app.use(helmet());
+app.use(cors());
+app.use(removeTrailingSlash);
+app.use(
+    morgan(isProd ? 'combined' : 'dev', {
+        skip: (req) => req.path === '/',
+        stream: logStream,
+    }),
+);
+app.use(bodyParser.json());
+
+// --- Add routes ---
 app.get('/', function (_req, res) {
-    res.send('Hello, World!');
+    res.send('');
 });
 
 // -- Start server --

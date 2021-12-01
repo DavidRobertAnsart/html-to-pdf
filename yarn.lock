@@ -78,7 +78,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/body-parser@npm:*":
+"@types/body-parser@npm:*, @types/body-parser@npm:^1.19.2":
   version: 1.19.2
   resolution: "@types/body-parser@npm:1.19.2"
   dependencies:
@@ -94,6 +94,13 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: fe81351470f2d3165e8b12ce33542eef89ea893e36dd62e8f7d72566dfb7e448376ae962f9f3ea888547ce8b55a40020ca0e01d637fab5d99567673084542641
+  languageName: node
+  linkType: hard
+
+"@types/cors@npm:2.8.12":
+  version: 2.8.12
+  resolution: "@types/cors@npm:2.8.12"
+  checksum: 8c45f112c7d1d2d831b4b266f2e6ed33a1887a35dcbfe2a18b28370751fababb7cd045e745ef84a523c33a25932678097bf79afaa367c6cb3fa0daa7a6438257
   languageName: node
   linkType: hard
 
@@ -138,6 +145,15 @@ __metadata:
   version: 1.3.2
   resolution: "@types/mime@npm:1.3.2"
   checksum: 0493368244cced1a69cb791b485a260a422e6fcc857782e1178d1e6f219f1b161793e9f87f5fae1b219af0f50bee24fcbe733a18b4be8fdd07a38a8fb91146fd
+  languageName: node
+  linkType: hard
+
+"@types/morgan@npm:^1.9.3":
+  version: 1.9.3
+  resolution: "@types/morgan@npm:1.9.3"
+  dependencies:
+    "@types/node": "*"
+  checksum: 0b9bc8641ce03f7176f617523b8da300e5d47225b1667396749950ac7fdfa1f990447d490648fbaff050c2b0ef5fa60c3f2f00c6b76efec06fe5148de5020813
   languageName: node
   linkType: hard
 
@@ -394,7 +410,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"body-parser@npm:1.19.0":
+"basic-auth@npm:~2.0.1":
+  version: 2.0.1
+  resolution: "basic-auth@npm:2.0.1"
+  dependencies:
+    safe-buffer: 5.1.2
+  checksum: 3419b805d5dfc518f3a05dcf42aa53aa9ce820e50b6df5097f9e186322e1bc733c36722b624802cd37e791035aa73b828ed814d8362333d42d7f5cd04d7a5e48
+  languageName: node
+  linkType: hard
+
+"body-parser@npm:1.19.0, body-parser@npm:^1.19.0":
   version: 1.19.0
   resolution: "body-parser@npm:1.19.0"
   dependencies:
@@ -578,6 +603,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cors@npm:^2.8.5":
+  version: 2.8.5
+  resolution: "cors@npm:2.8.5"
+  dependencies:
+    object-assign: ^4
+    vary: ^1
+  checksum: ced838404ccd184f61ab4fdc5847035b681c90db7ac17e428f3d81d69e2989d2b680cc254da0e2554f5ed4f8a341820a1ce3d1c16b499f6e2f47a1b9b07b5006
+  languageName: node
+  linkType: hard
+
 "cross-spawn@npm:^7.0.2":
   version: 7.0.3
   resolution: "cross-spawn@npm:7.0.3"
@@ -639,6 +674,13 @@ __metadata:
   version: 1.1.2
   resolution: "depd@npm:1.1.2"
   checksum: 6b406620d269619852885ce15965272b829df6f409724415e0002c8632ab6a8c0a08ec1f0bd2add05dc7bd7507606f7e2cc034fa24224ab829580040b835ecd9
+  languageName: node
+  linkType: hard
+
+"depd@npm:~2.0.0":
+  version: 2.0.0
+  resolution: "depd@npm:2.0.0"
+  checksum: abbe19c768c97ee2eed6282d8ce3031126662252c58d711f646921c9623f9052e3e1906443066beec1095832f534e57c523b7333f8e7e0d93051ab6baef5ab3a
   languageName: node
   linkType: hard
 
@@ -770,7 +812,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-import-resolver-node@npm:^0.3.6":
+"eslint-import-resolver-node@npm:0.3.6, eslint-import-resolver-node@npm:^0.3.6":
   version: 0.3.6
   resolution: "eslint-import-resolver-node@npm:0.3.6"
   dependencies:
@@ -1306,21 +1348,35 @@ __metadata:
   languageName: node
   linkType: hard
 
+"helmet@npm:^4.6.0":
+  version: 4.6.0
+  resolution: "helmet@npm:4.6.0"
+  checksum: 139ad678d1cab207b043c206f50f6744eff2ef1f463e4626d36718b45b337485c77d10260ef9d89d292fa678da5153d86b08172b3b365cc8e680241015ed3a49
+  languageName: node
+  linkType: hard
+
 "html-to-pdf@workspace:.":
   version: 0.0.0-use.local
   resolution: "html-to-pdf@workspace:."
   dependencies:
+    "@types/body-parser": ^1.19.2
+    "@types/cors": 2.8.12
     "@types/express": 4.17.13
+    "@types/morgan": ^1.9.3
     "@types/node": 16.11.11
     "@typescript-eslint/eslint-plugin": 5.5.0
     "@typescript-eslint/parser": 5.5.0
+    body-parser: ^1.19.0
+    cors: ^2.8.5
     eslint: 8.3.0
     eslint-config-prettier: 8.3.0
-    eslint-import-resolver-node: ^0.3.6
+    eslint-import-resolver-node: 0.3.6
     eslint-import-resolver-typescript: 2.5.0
     eslint-plugin-import: 2.25.3
     eslint-plugin-prettier: 4.0.0
     express: ^4.17.1
+    helmet: ^4.6.0
+    morgan: ^1.10.0
     prettier: 2.5.0
     typescript: 4.5.2
     winston: ^3.3.3
@@ -1761,6 +1817,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"morgan@npm:^1.10.0":
+  version: 1.10.0
+  resolution: "morgan@npm:1.10.0"
+  dependencies:
+    basic-auth: ~2.0.1
+    debug: 2.6.9
+    depd: ~2.0.0
+    on-finished: ~2.3.0
+    on-headers: ~1.0.2
+  checksum: fb41e226ab5a1abf7e8909e486b387076534716d60207e361acfb5df78b84d703a7b7ea58f3046a9fd0b83d3c94bfabde32323341a1f1b26ce50680abd2ea5dd
+  languageName: node
+  linkType: hard
+
 "ms@npm:2.0.0":
   version: 2.0.0
   resolution: "ms@npm:2.0.0"
@@ -1800,6 +1869,13 @@ __metadata:
   version: 0.6.2
   resolution: "negotiator@npm:0.6.2"
   checksum: dfddaff6c06792f1c4c3809e29a427b8daef8cd437c83b08dd51d7ee11bbd1c29d9512d66b801144d6c98e910ffd8723f2432e0cbf8b18d41d2a09599c975ab3
+  languageName: node
+  linkType: hard
+
+"object-assign@npm:^4":
+  version: 4.1.1
+  resolution: "object-assign@npm:4.1.1"
+  checksum: fcc6e4ea8c7fe48abfbb552578b1c53e0d194086e2e6bbbf59e0a536381a292f39943c6e9628af05b5528aa5e3318bb30d6b2e53cadaf5b8fe9e12c4b69af23f
   languageName: node
   linkType: hard
 
@@ -1846,6 +1922,13 @@ __metadata:
   dependencies:
     ee-first: 1.1.1
   checksum: 1db595bd963b0124d6fa261d18320422407b8f01dc65863840f3ddaaf7bcad5b28ff6847286703ca53f4ec19595bd67a2f1253db79fc4094911ec6aa8df1671b
+  languageName: node
+  linkType: hard
+
+"on-headers@npm:~1.0.2":
+  version: 1.0.2
+  resolution: "on-headers@npm:1.0.2"
+  checksum: 2bf13467215d1e540a62a75021e8b318a6cfc5d4fc53af8e8f84ad98dbcea02d506c6d24180cd62e1d769c44721ba542f3154effc1f7579a8288c9f7873ed8e5
   languageName: node
   linkType: hard
 
@@ -2524,7 +2607,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vary@npm:~1.1.2":
+"vary@npm:^1, vary@npm:~1.1.2":
   version: 1.1.2
   resolution: "vary@npm:1.1.2"
   checksum: ae0123222c6df65b437669d63dfa8c36cee20a504101b2fcd97b8bf76f91259c17f9f2b4d70a1e3c6bbcee7f51b28392833adb6b2770b23b01abec84e369660b

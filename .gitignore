@@ -38,3 +38,7 @@ dist/**/*
 # Documentation here: https://yarnpkg.com/features/zero-installs
 !/.yarn/cache
 #/.pnp.*
+
+# logs
+error.log
+access.log

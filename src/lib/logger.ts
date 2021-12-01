@@ -32,3 +32,5 @@ export const logger = createLogger({
                   new transports.Console(),
               ],
 });
+
+export type Test = number;

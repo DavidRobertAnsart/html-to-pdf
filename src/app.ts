@@ -1,6 +1,7 @@
-import { logger } from './lib/logger';
-import { onError, normalizePort } from './lib/server';
 import express from 'express';
+
+import { logger } from './lib/logger';
+import { normalizePort, onError } from './lib/server';
 
 const app = express();
 app.get('/', function (_req, res) {
@@ -8,7 +9,7 @@ app.get('/', function (_req, res) {
 });
 
 // -- Start server --
-const port = process.env.PORT || '3000';
+const port = process.env.PORT || 3000;
 const normalizedPort = normalizePort(port);
 if (normalizedPort === false) {
     logger.error(`Exiting. Invalid port to use: %s`, port);

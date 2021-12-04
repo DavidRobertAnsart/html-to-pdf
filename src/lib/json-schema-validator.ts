@@ -4,7 +4,7 @@ import addFormats from 'ajv-formats';
 
 import { AppError } from '../middlewares/handleErrors';
 
-const ajv = new Ajv();
+const ajv = new Ajv({ allowUnionTypes: true });
 addFormats(ajv);
 
 const sendInvalidDataError = (

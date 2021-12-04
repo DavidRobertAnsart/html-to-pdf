@@ -40,6 +40,7 @@ app.get('/', function (_req, res) {
     res.send('Server running!');
 });
 app.post('/pdf', handleErrors(generatePdfHandler));
+app.use(`/static/pdf`, express.static(path.join(__dirname, './static/pdf')));
 app.use((_, res) => {
     res.status(404).send('Error 404 - Not found.');
 });

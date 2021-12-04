@@ -6,7 +6,7 @@ import puppeteer from 'puppeteer';
 import { v4 as uuidv4 } from 'uuid';
 
 import { logger } from '../lib/logger';
-import { AppError } from '../middlewares/handleErrors';
+import { AppError } from '../middlewares/handle-errors';
 
 export type generatePdfArgs = {
     filename: string;

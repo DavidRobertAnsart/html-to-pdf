@@ -9,8 +9,8 @@ import morgan from 'morgan';
 
 import { logger } from './lib/logger';
 import { normalizePort, onError } from './lib/server';
-import { handleErrors } from './middlewares/handleErrors';
-import { removeTrailingSlash } from './middlewares/removeTrailingSlash';
+import { handleErrors } from './middlewares/handle-errors';
+import { removeTrailingSlash } from './middlewares/remove-trailing-slash';
 import { generatePdfHandler } from './pdf/generate-pdf-handler';
 
 const isProd = process.env.NODE_ENV === 'production';

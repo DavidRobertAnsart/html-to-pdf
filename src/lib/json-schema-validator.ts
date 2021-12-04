@@ -2,7 +2,7 @@ import type { DefinedError, ValidateFunction } from 'ajv';
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 
-import { AppError } from '../middlewares/handleErrors';
+import { AppError } from '../middlewares/handle-errors';
 
 const ajv = new Ajv({ allowUnionTypes: true });
 addFormats(ajv);

@@ -9,7 +9,9 @@ import morgan from 'morgan';
 
 import { logger } from './lib/logger';
 import { normalizePort, onError } from './lib/server';
+import { handleErrors } from './middlewares/handleErrors';
 import { removeTrailingSlash } from './middlewares/removeTrailingSlash';
+import { generatePdfHandler } from './pdf/generate-pdf-handler';
 
 const isProd = process.env.NODE_ENV === 'production';
 const logStream = isProd
@@ -35,7 +37,11 @@ app.use(bodyParser.json());
 
 // --- Add routes ---
 app.get('/', function (_req, res) {
-    res.send('');
+    res.send('Server running!');
+});
+app.post('/pdf', handleErrors(generatePdfHandler));
+app.use((_, res) => {
+    res.status(404).send('Error 404 - Not found.');
 });
 
 // -- Start server --

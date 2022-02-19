@@ -6,13 +6,21 @@ import puppeteer from 'puppeteer';
 import { v4 as uuidv4 } from 'uuid';
 
 import { logger } from '../lib/logger';
-import { AppError } from '../middlewares/handle-errors';
+
+type UrlContent = {
+    url: string;
+};
+type HtmlContent = {
+    html: string;
+};
+type AnyContent = UrlContent | HtmlContent;
+
+const isUrlContent = (content: AnyContent): content is UrlContent =>
+    Object.prototype.hasOwnProperty.call(content, 'url');
 
 export type generatePdfArgs = {
     filename: string;
-    content: {
-        url: string;
-    };
+    content: AnyContent;
     format: PDFOptions['format'];
     margin: PDFOptions['margin'];
     landscape: PDFOptions['landscape'];
@@ -27,18 +35,17 @@ export async function generatePdf({
     landscape,
     omitBackground,
 }: generatePdfArgs) {
-    if (!content.url) {
-        // should not happen
-        throw new AppError('unknown', '');
-    }
-
     const id = uuidv4();
     const directory = path.join(__dirname, '..', 'static/pdf', id);
     await fs.mkdirs(directory);
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.goto(content.url);
+    if (isUrlContent(content)) {
+        await page.goto(content.url);
+    } else {
+        await page.setContent(content.html);
+    }
     await page.waitForNetworkIdle({ idleTime: 500, timeout: 5000 });
     const pdfBuffer = await page.pdf({
         format,

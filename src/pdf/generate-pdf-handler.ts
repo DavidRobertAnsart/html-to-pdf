@@ -12,10 +12,20 @@ const PDF_HANDLER_SCHEMA: JSONSchemaType<generatePdfArgs> = {
             type: 'string',
         },
         content: {
-            type: 'object',
-            properties: { url: { type: 'string', format: 'uri' } },
-            required: ['url'],
-            additionalProperties: false,
+            oneOf: [
+                {
+                    type: 'object',
+                    properties: { url: { type: 'string', format: 'uri' } },
+                    required: ['url'],
+                    additionalProperties: false,
+                },
+                {
+                    type: 'object',
+                    properties: { html: { type: 'string' } },
+                    required: ['html'],
+                    additionalProperties: false,
+                },
+            ],
         },
         format: {
             type: 'string',

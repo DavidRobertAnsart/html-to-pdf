@@ -11,7 +11,7 @@
     "build": "swc ./src -d dist",
     "start": "node dist/app.js",
     "start-dev": "yarn build && yarn start",
-    "dev": "nodemon --watch src --exec yarn start-dev "
+    "dev": "nodemon --watch ./src --ext ts --exec yarn start-dev "
   },
   "devDependencies": {
     "@swc/cli": "^0.1.55",
